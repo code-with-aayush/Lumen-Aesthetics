@@ -70,9 +70,20 @@ const AnswersSchema = z
   })
   .strict(); // Reject unknown keys.
 
+// Optional lead capture payload. A4 sends it from the lead capture form;
+// A5 will persist it to Airtable. For now, the server accepts and ignores it
+// (logged at debug level only). Kept narrow: just name + email.
+const LeadSchema = z
+  .object({
+    name: z.string().min(1).max(200),
+    email: z.string().email().max(200),
+  })
+  .strict();
+
 const RequestSchema = z
   .object({
     answers: AnswersSchema,
+    lead: LeadSchema.optional(),
   })
   .strict();
 
