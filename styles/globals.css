@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Source of truth: PRD §2.1, §7.3, §13 */
+@layer base {
+  html,
+  body {
+    background-color: #0a0a0a;
+    color: #e8e8e8;
+    font-family: var(--font-body), "DM Sans", sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display), "Cormorant Garamond", serif;
+    font-weight: 300;
+    line-height: 1.1;
+  }
+
+  /* Selection — gold tint */
+  ::selection {
+    background-color: rgba(184, 151, 74, 0.3);
+    color: #f7f1e6;
+  }
+}
