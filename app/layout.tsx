@@ -4,6 +4,7 @@ import "../styles/globals.css";
 
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { PageTransition } from "@/components/shared/PageTransition";
 
 // Display font — luxury signal. Per PRD §2.1 / §13: must load before first paint.
 const display = Cormorant_Garamond({
@@ -38,7 +39,7 @@ export default function RootLayout({
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className="bg-lumen-black">
         <Header />
-        {children}
+        <PageTransition>{children}</PageTransition>
         <Footer />
       </body>
     </html>
