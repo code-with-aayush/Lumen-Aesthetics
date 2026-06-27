@@ -1,15 +1,18 @@
 /**
- * Homepage — assembled incrementally across B2 → B4.
+ * Homepage — fully assembled across B2 → B4.
  *
- *   B2 (done): Hero + Ticker (inside Hero) + ProofStrip.
- *   B3 (this): TreatmentsPreview, QuizEntry, Philosophy.
- *   B4 (next): Testimonials, MembershipTeaser, FinalCTA.
+ *   B2: Hero + ProofStrip.
+ *   B3: TreatmentsPreview, QuizEntry, Philosophy.
+ *   B4: Testimonials, MembershipTeaser, FinalCTA.
  */
 
+import { FinalCTA } from "@/components/home/FinalCTA";
 import { Hero } from "@/components/home/Hero";
+import { MembershipTeaser } from "@/components/home/MembershipTeaser";
 import { Philosophy } from "@/components/home/Philosophy";
 import { ProofStrip } from "@/components/home/ProofStrip";
 import { QuizEntry } from "@/components/home/QuizEntry";
+import { Testimonials } from "@/components/home/Testimonials";
 import { TreatmentsPreview } from "@/components/home/TreatmentsPreview";
 
 export default function Home() {
@@ -20,6 +23,9 @@ export default function Home() {
       <TreatmentsPreview />
       <QuizEntry />
       <Philosophy />
+      <Testimonials />
+      <MembershipTeaser />
+      <FinalCTA />
     </main>
   );
 }
