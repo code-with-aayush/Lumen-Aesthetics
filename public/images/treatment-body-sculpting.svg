@@ -1,0 +1,42 @@
+<!--
+  Body Sculpting placeholder — abstract curving silhouette suggesting a
+  contoured torso/figure in soft warm gradient. Evokes reduction and
+  refinement without depicting a person. Real photography lands in C5.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="Body Sculpting treatment placeholder">
+  <defs>
+    <radialGradient id="bs-glow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#3A3328" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#0F0E0C" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="bs-form" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4A453E" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#1F1D1B" stop-opacity="0.85" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="#1A1A1A" />
+  <rect width="600" height="800" fill="url(#bs-glow)" />
+  <!-- abstract contour: organic hourglass-like form -->
+  <path
+    d="M 220 180
+       Q 300 200 380 180
+       Q 400 280 360 360
+       Q 340 440 360 520
+       Q 380 620 320 700
+       Q 280 700 240 700
+       Q 180 620 200 520
+       Q 220 440 200 360
+       Q 160 280 220 180 Z"
+    fill="url(#bs-form)"
+  />
+  <!-- gold inner curve, like a sculpted line -->
+  <path
+    d="M 300 220
+       Q 320 320 280 440
+       Q 260 540 290 660"
+    stroke="#B8974A"
+    stroke-width="1"
+    fill="none"
+    opacity="0.45"
+  />
+</svg>

@@ -1,0 +1,22 @@
+<!--
+  Injectables placeholder — abstract editorial shape suggesting a fine,
+  precise stroke / droplet. Dark canvas with a single soft gold linework
+  form, hinting at the needle-meets-skin precision of injectables without
+  depicting anything clinical. Real photography lands in C5.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="Injectables treatment placeholder">
+  <defs>
+    <radialGradient id="inj-light" cx="50%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#3A3328" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#0F0E0C" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="600" height="800" fill="#1A1A1A" />
+  <rect width="600" height="800" fill="url(#inj-light)" />
+  <!-- thin vertical stroke, like a needle's path -->
+  <line x1="300" y1="120" x2="300" y2="540" stroke="#B8974A" stroke-width="1" opacity="0.45" />
+  <!-- droplet at the tip -->
+  <path d="M 300 560 Q 288 580 300 600 Q 312 580 300 560 Z" fill="#B8974A" opacity="0.35" />
+  <!-- subtle contour shape evoking a jawline / face profile -->
+  <path d="M 150 700 Q 150 420 300 420 Q 450 420 450 700" stroke="#3A3530" stroke-width="1" fill="none" opacity="0.5" />
+</svg>

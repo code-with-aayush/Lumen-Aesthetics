@@ -1,0 +1,29 @@
+<!--
+  Skin Optimisation placeholder — abstract overlapping circles suggesting
+  layering / glow, in muted warm tones with a single soft gold orb. Evokes
+  radiance and treatment layering without depicting a face. Real photography
+  lands in C5.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="Skin Optimisation treatment placeholder">
+  <defs>
+    <radialGradient id="so-orb" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F7F1E6" stop-opacity="0.55" />
+      <stop offset="60%" stop-color="#B8974A" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#B8974A" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="so-bg" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#3A3328" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#0F0E0C" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="600" height="800" fill="#1A1A1A" />
+  <rect width="600" height="800" fill="url(#so-bg)" />
+  <!-- overlapping translucent layers -->
+  <circle cx="260" cy="320" r="180" fill="#4A453E" opacity="0.35" />
+  <circle cx="340" cy="420" r="200" fill="#3A3530" opacity="0.4" />
+  <circle cx="300" cy="500" r="160" fill="#252220" opacity="0.55" />
+  <!-- the radiance orb itself -->
+  <circle cx="300" cy="400" r="140" fill="url(#so-orb)" />
+  <!-- small bright center -->
+  <circle cx="300" cy="400" r="6" fill="#F7F1E6" opacity="0.7" />
+</svg>
