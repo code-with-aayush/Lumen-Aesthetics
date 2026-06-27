@@ -41,12 +41,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Lumen Aesthetics",
+    images: [
+      {
+        url: "/images/hero-portrait.svg",
+        width: 300,
+        height: 400,
+        alt: "Lumen Aesthetics — medical aesthetics, New York",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lumen Aesthetics | Medical Aesthetics New York",
     description:
       "New York's most discreet medical aesthetics studio. Results that speak for themselves.",
+    images: ["/images/hero-portrait.svg"],
   },
   metadataBase: new URL("https://lumen-aesthetics-demo.com"),
 };

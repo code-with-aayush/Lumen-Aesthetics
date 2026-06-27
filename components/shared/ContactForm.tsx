@@ -44,9 +44,12 @@ export function ContactForm(): JSX.Element {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm<FormValues>({
-    mode: "onBlur",
+    // mode: "onSubmit" — let users click submit and see all errors at once
+    // rather than blocking the button on partial validation. The server
+    // re-validates everything anyway.
+    mode: "onSubmit",
     defaultValues: { name: "", email: "", message: "" },
   });
 
@@ -138,14 +141,16 @@ export function ContactForm(): JSX.Element {
               id="contact-name"
               type="text"
               autoComplete="name"
+              aria-invalid={errors.name ? "true" : "false"}
+              aria-describedby={errors.name ? "contact-name-error" : undefined}
               {...register("name", {
                 required: "Please enter your name",
                 maxLength: { value: 120, message: "Name is too long" },
               })}
-              className="border-b border-lumen-border bg-transparent py-3 font-body text-base text-lumen-offwhite outline-none transition-colors duration-500 focus:border-lumen-gold"
+              className="border-b border-lumen-border bg-transparent py-3 font-body text-base text-lumen-offwhite outline-none transition-colors duration-500 focus:border-lumen-gold aria-[invalid=true]:border-red-400/50"
             />
             {errors.name ? (
-              <p className="font-body text-xs text-red-400/80">
+              <p id="contact-name-error" className="font-body text-xs text-red-400/80">
                 {errors.name.message}
               </p>
             ) : null}
@@ -163,6 +168,8 @@ export function ContactForm(): JSX.Element {
               id="contact-email"
               type="email"
               autoComplete="email"
+              aria-invalid={errors.email ? "true" : "false"}
+              aria-describedby={errors.email ? "contact-email-error" : undefined}
               {...register("email", {
                 required: "Please enter your email",
                 pattern: {
@@ -171,10 +178,10 @@ export function ContactForm(): JSX.Element {
                 },
                 maxLength: { value: 254, message: "Email is too long" },
               })}
-              className="border-b border-lumen-border bg-transparent py-3 font-body text-base text-lumen-offwhite outline-none transition-colors duration-500 focus:border-lumen-gold"
+              className="border-b border-lumen-border bg-transparent py-3 font-body text-base text-lumen-offwhite outline-none transition-colors duration-500 focus:border-lumen-gold aria-[invalid=true]:border-red-400/50"
             />
             {errors.email ? (
-              <p className="font-body text-xs text-red-400/80">
+              <p id="contact-email-error" className="font-body text-xs text-red-400/80">
                 {errors.email.message}
               </p>
             ) : null}
@@ -191,30 +198,35 @@ export function ContactForm(): JSX.Element {
             <textarea
               id="contact-message"
               rows={5}
+              aria-invalid={errors.message ? "true" : "false"}
+              aria-describedby={errors.message ? "contact-message-error" : undefined}
               {...register("message", {
                 required: "Please write a message",
                 minLength: { value: 10, message: "Please write at least 10 characters" },
                 maxLength: { value: 2000, message: "Message is too long" },
               })}
-              className="resize-none border-b border-lumen-border bg-transparent py-3 font-body text-base text-lumen-offwhite outline-none transition-colors duration-500 focus:border-lumen-gold"
+              className="resize-none border-b border-lumen-border bg-transparent py-3 font-body text-base text-lumen-offwhite outline-none transition-colors duration-500 focus:border-lumen-gold aria-[invalid=true]:border-red-400/50"
             />
             {errors.message ? (
-              <p className="font-body text-xs text-red-400/80">
+              <p id="contact-message-error" className="font-body text-xs text-red-400/80">
                 {errors.message.message}
               </p>
             ) : null}
           </div>
 
-          {/* Server-side error */}
+          {/* Server-side error — surfaced with aria-live so screen readers
+              announce the change without focus needing to move. */}
           {state.kind === "error" ? (
-            <p className="font-body text-sm text-red-400/90">{state.message}</p>
+            <p role="alert" aria-live="polite" className="font-body text-sm text-red-400/90">
+              {state.message}
+            </p>
           ) : null}
 
           <div>
             <Button
               type="submit"
               variant="outline"
-              disabled={state.kind === "submitting" || !isValid}
+              disabled={state.kind === "submitting"}
             >
               {state.kind === "submitting" ? "Sending…" : "Send Message"}
             </Button>
