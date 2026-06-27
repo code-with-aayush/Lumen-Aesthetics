@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "../styles/globals.css";
 
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+
 // Display font — luxury signal. Per PRD §2.1 / §13: must load before first paint.
 const display = Cormorant_Garamond({
   subsets: ["latin"],
@@ -33,7 +36,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
-      <body>{children}</body>
+      <body className="bg-lumen-black">
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
