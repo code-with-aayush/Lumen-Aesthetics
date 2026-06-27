@@ -25,9 +25,30 @@ const body = DM_Sans({
   preload: true,
 });
 
+// Site-wide default metadata. Page-specific `generateMetadata()` exports
+// override these on each route.
 export const metadata: Metadata = {
-  title: "Lumen Aesthetics",
-  description: "Where science meets artistry.",
+  title: {
+    default: "Lumen Aesthetics | Medical Aesthetics New York",
+    template: "%s · Lumen Aesthetics",
+  },
+  description:
+    "New York's most discreet medical aesthetics studio. Results that speak for themselves.",
+  openGraph: {
+    title: "Lumen Aesthetics | Medical Aesthetics New York",
+    description:
+      "New York's most discreet medical aesthetics studio. Results that speak for themselves.",
+    type: "website",
+    locale: "en_US",
+    siteName: "Lumen Aesthetics",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lumen Aesthetics | Medical Aesthetics New York",
+    description:
+      "New York's most discreet medical aesthetics studio. Results that speak for themselves.",
+  },
+  metadataBase: new URL("https://lumen-aesthetics-demo.com"),
 };
 
 export default function RootLayout({
