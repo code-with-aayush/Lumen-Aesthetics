@@ -1,0 +1,55 @@
+<!--
+  Clinic interior placeholder — abstract architectural scene suggesting a
+  minimal, well-lit treatment space. Soft warm light from above, clean
+  geometric forms, muted palette. Real photography lands in C5.
+
+  Aspect 21:9 (cinematic) matches the PRD §5.1 brief for a full-width
+  editorial band. The text overlay in the Philosophy component sits on
+  the left third; the image is intentionally busy enough to support
+  text-on-image legibility via a dark gradient.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2100 900" role="img" aria-label="Clinic interior placeholder">
+  <defs>
+    <radialGradient id="light" cx="50%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#5A554D" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#1A1A1A" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2A2520" />
+      <stop offset="100%" stop-color="#0F0E0C" />
+    </linearGradient>
+  </defs>
+
+  <!-- base floor -->
+  <rect width="2100" height="900" fill="#0F0E0C" />
+  <rect width="2100" height="600" fill="url(#floor)" />
+
+  <!-- soft warm light from above -->
+  <rect width="2100" height="900" fill="url(#light)" />
+
+  <!-- architectural lines: walls + treatment chair silhouette -->
+  <line x1="0" y1="450" x2="2100" y2="450" stroke="#3A3530" stroke-width="1" opacity="0.4" />
+
+  <!-- treatment chair (low, minimal) -->
+  <rect x="950" y="540" width="200" height="80" fill="#252220" rx="4" />
+  <rect x="970" y="620" width="160" height="6" fill="#1A1A1A" />
+  <rect x="990" y="626" width="6" height="180" fill="#1A1A1A" />
+  <rect x="1104" y="626" width="6" height="180" fill="#1A1A1A" />
+
+  <!-- pendant light above chair -->
+  <line x1="1050" y1="0" x2="1050" y2="280" stroke="#3A3530" stroke-width="1" />
+  <ellipse cx="1050" cy="290" rx="50" ry="14" fill="#5A554D" opacity="0.6" />
+
+  <!-- right side: a small console/desk -->
+  <rect x="1500" y="600" width="200" height="6" fill="#252220" />
+  <rect x="1530" y="606" width="6" height="200" fill="#1A1A1A" />
+  <rect x="1664" y="606" width="6" height="200" fill="#1A1A1A" />
+  <rect x="1540" y="560" width="120" height="40" fill="#2A2520" />
+
+  <!-- left side: tall plant pot silhouette for organic contrast -->
+  <path d="M 250 800 Q 250 600 300 600 Q 350 600 350 800 Z" fill="#1F1D1B" />
+  <ellipse cx="300" cy="580" rx="50" ry="40" fill="#252220" opacity="0.6" />
+
+  <!-- subtle gold highlight catching the chair edge (brand cue) -->
+  <line x1="950" y1="540" x2="1150" y2="540" stroke="#B8974A" stroke-width="1" opacity="0.4" />
+</svg>
