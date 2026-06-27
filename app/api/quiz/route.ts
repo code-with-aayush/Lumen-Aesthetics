@@ -19,6 +19,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { GoogleGenAI, Type } from "@google/genai";
 import { z } from "zod";
 
+import { postLeadToAirtable } from "@/lib/airtable";
 import { getFallbackRecommendations } from "@/lib/quiz-fallback";
 
 // Force Node runtime: Edge would expose slightly different request semantics
@@ -301,6 +302,16 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
   // 3. Call Gemini. On any throw or shape mismatch, fall back.
   const apiKey = process.env.GEMINI_API_KEY;
+
+  // Lead capture is fire-and-forget. We do NOT await it because Airtable
+  // latency (up to 5s timeout in the helper) would block the user from
+  // seeing their results. The trade-off: on a cold start or in a serverless
+  // environment that freezes the context immediately after the response is
+  // sent, a small fraction of leads may be lost. This is acceptable per
+  // PRD §3.3 — lead capture is non-critical and must never delay results.
+  // Codex review: confirmed await pattern caused up-to-5s user-visible delay.
+  queueLead(body.lead, body.answers);
+
   if (!apiKey) {
     return NextResponse.json(getFallbackRecommendations(body.answers));
   }
@@ -368,6 +379,58 @@ function classifyError(error: unknown): string {
   if (msg.includes("shape") || msg.includes("schema")) return "schema";
   if (msg.includes("network") || msg.includes("econnrefused")) return "network";
   return "provider_error";
+}
+
+/**
+ * Fire-and-forget the lead to Airtable. Errors are swallowed and logged
+ * with a category tag — per PRD §3.3 and CLAUDE.md §5, lead capture
+ * failures must never block the user from seeing their results.
+ *
+ * Not awaited by the caller. Trade-off: on serverless platforms that
+ * freeze the execution context after the response is sent (e.g. Vercel),
+ * a small fraction of leads may be dropped in flight. This is acceptable
+ * because lead capture is non-critical and the alternative — awaiting —
+ * delays the user by up to 5s on a slow Airtable response.
+ *
+ * Codex review: confirmed awaiting pattern caused up-to-5s user-visible
+ * latency; this fire-and-forget form eliminates that delay.
+ */
+function queueLead(
+  lead: { name: string; email: string } | undefined,
+  answers: {
+    q1: string;
+    q2: string;
+    q3: string;
+    q4: string;
+    q5: string;
+  },
+): void {
+  if (!lead) return; // Skip path — no lead to send.
+
+  // Use Promise chain so an unexpected throw doesn't crash the request.
+  // Catch handlers log a coarse category only — never the raw error
+  // message (which could include header/request context in some runtimes).
+  // Codex review: original catch logged `error.message`, which can leak
+  // sensitive request internals from the fetch implementation.
+  postLeadToAirtable(lead, answers)
+    .then((result) => {
+      if (result.skipped) {
+        // No Airtable credentials configured — expected in local dev.
+        console.info("[quiz] Airtable not configured; lead not persisted");
+        return;
+      }
+      if (!result.ok) {
+        console.error("[quiz] Airtable lead capture failed:", {
+          category: result.category ?? "unknown",
+        });
+      }
+    })
+    .catch(() => {
+      // Final safety net. Don't echo the thrown value — see comment above.
+      console.error("[quiz] Airtable lead capture threw:", {
+        category: "unknown",
+      });
+    });
 }
 
 // ---------------------------------------------------------------------------
