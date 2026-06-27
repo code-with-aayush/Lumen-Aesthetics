@@ -47,3 +47,9 @@ tmp-*.log.err
 # OS
 Thumbs.db
 
+# Confidential — local-only, never commit (stripped from history 2026-06-27)
+CLAUDE.md
+project_context/
+tracking/
+scripts/
+
