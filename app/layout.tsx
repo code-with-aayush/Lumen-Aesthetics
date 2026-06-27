@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: "Lumen Aesthetics",
     images: [
       {
-        url: "/images/hero-portrait.svg",
+        url: "/images/hero-portrait.png",
         width: 300,
         height: 400,
         alt: "Lumen Aesthetics — medical aesthetics, New York",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     title: "Lumen Aesthetics | Medical Aesthetics New York",
     description:
       "New York's most discreet medical aesthetics studio. Results that speak for themselves.",
-    images: ["/images/hero-portrait.svg"],
+    images: ["/images/hero-portrait.png"],
   },
   metadataBase: new URL("https://lumen-aesthetics-demo.com"),
 };

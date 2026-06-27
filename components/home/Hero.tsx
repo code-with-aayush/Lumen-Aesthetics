@@ -46,11 +46,17 @@ export function Hero(): JSX.Element {
   };
 
   return (
-    <section className="relative min-h-screen bg-lumen-black pt-24 md:pt-20">
+    <section className="relative min-h-screen bg-lumen-black pt-24 md:pt-20 overflow-hidden">
+      {/* Premium radial background glow */}
+      <div 
+        className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(184,151,74,0.07),transparent_50%)] pointer-events-none" 
+        aria-hidden="true"
+      />
+
       {/* Main split: 55% text, 45% image. Stacks on mobile. */}
       <div className="mx-auto grid max-w-content grid-cols-1 gap-12 px-6 pb-16 md:min-h-[calc(100vh-5rem)] md:grid-cols-[55fr_45fr] md:items-center md:gap-16 md:pb-24">
         {/* Left: text block */}
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center relative z-10">
           {/* Eyebrow */}
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -122,13 +128,13 @@ export function Hero(): JSX.Element {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: EASE, delay: 0.4 }}
-          className="relative mx-auto w-full max-w-md md:max-w-none"
+          className="relative mx-auto w-full max-w-md md:max-w-none z-10"
         >
           {/* Gold frame — 2px solid gold, slight inset from the photo. */}
           <div className="relative aspect-[3/4] w-full border-2 border-lumen-gold p-3">
             <div className="relative h-full w-full overflow-hidden">
               <Image
-                src="/images/hero-portrait.svg"
+                src="/images/hero-portrait.png"
                 alt="Editorial portrait"
                 fill
                 priority
@@ -154,6 +160,35 @@ export function Hero(): JSX.Element {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Elegant scroll down indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.7 }}
+        transition={{ duration: 0.7, ease: EASE, delay: 1.6 }}
+        className="absolute bottom-24 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 cursor-pointer z-20 group"
+        onClick={() => {
+          window.scrollTo({
+            top: window.innerHeight,
+            behavior: "smooth",
+          });
+        }}
+      >
+        <span className="font-body text-[9px] uppercase tracking-widest text-lumen-muted group-hover:text-lumen-gold transition-colors duration-500">
+          Scroll
+        </span>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{
+            duration: 2.2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="w-5 h-8 border border-lumen-gold/30 group-hover:border-lumen-gold/60 rounded-full flex justify-center p-1 transition-colors duration-500"
+        >
+          <div className="w-1 h-1.5 bg-lumen-gold rounded-full" />
+        </motion.div>
+      </motion.div>
 
       {/* Bottom band: gold divider + scrolling ticker. Sits at the bottom
           of the hero section regardless of viewport height. */}

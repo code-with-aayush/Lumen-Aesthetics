@@ -26,7 +26,7 @@ const TREATMENTS: ReadonlyArray<Treatment> = [
       "A 45-minute consultation and treatment in a single visit. Discomfort is minimal; most patients return to normal activity the same day.",
     timeline: "Visible refinement within 5–7 days; full settling by week two. Results last 3–4 months for Botox, 9–14 months for filler.",
     priceFrom: "$650",
-    image: "/images/treatment-injectables.svg",
+    image: "/images/treatment-injectables.png",
   },
   {
     slug: "laser-resurfacing",
@@ -39,7 +39,7 @@ const TREATMENTS: ReadonlyArray<Treatment> = [
       "Numbing cream, a 60–90 minute session, and a controlled 5–7 day recovery. Skin reads pink, then flutes, then reveals.",
     timeline: "Visible improvement at 2 weeks; collagen remodelling continues for 3 months. A single treatment is often transformative; deeper concerns may need a pair.",
     priceFrom: "$1,200",
-    image: "/images/treatment-laser.svg",
+    image: "/images/treatment-laser.png",
   },
   {
     slug: "rf-microneedling",
@@ -52,7 +52,7 @@ const TREATMENTS: ReadonlyArray<Treatment> = [
       "Three to four sessions, four weeks apart. Mild redness for 24–48 hours; no real downtime beyond that.",
     timeline: "Initial tightening at 4–6 weeks; the deeper collagen build continues for 6 months. Results last 12–18 months with maintenance.",
     priceFrom: "$950",
-    image: "/images/treatment-rf-microneedling.svg",
+    image: "/images/treatment-rf-microneedling.png",
   },
   {
     slug: "body-sculpting",
@@ -65,7 +65,7 @@ const TREATMENTS: ReadonlyArray<Treatment> = [
       "A series of 2–4 sessions per area, spaced 6 weeks apart. No anaesthesia, no incisions, no downtime — most patients return to the gym within a day.",
     timeline: "Initial change at 6 weeks; final contour visible at 12 weeks. Results are durable with weight stability.",
     priceFrom: "$1,500",
-    image: "/images/treatment-body-sculpting.svg",
+    image: "/images/treatment-body-sculpting.png",
   },
   {
     slug: "skin-optimisation",
@@ -78,7 +78,7 @@ const TREATMENTS: ReadonlyArray<Treatment> = [
       "An opening skin analysis, a 60-minute first treatment, and a written protocol you can actually follow. Monthly visits refine from there.",
     timeline: "Visible improvement within 2 weeks; meaningful change by month three. This is the long game — and it compounds.",
     priceFrom: "$350",
-    image: "/images/treatment-skin-optimisation.svg",
+    image: "/images/treatment-skin-optimisation.png",
   },
 ];
 

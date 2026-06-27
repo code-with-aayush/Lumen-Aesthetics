@@ -94,14 +94,14 @@ const TEAM = [
     name: "Elena Vasquez, MD",
     credentials: "Medical Director & Founder",
     bio: "Board-certified in dermatology with fellowship training in aesthetic medicine at Mount Sinai. Dr. Vasquez sees every new patient personally and oversees the clinic's clinical protocols.",
-    imageSrc: "/images/team-elena.svg",
+    imageSrc: "/images/team-elena.png",
     imageAlt: "Dr. Elena Vasquez — Medical Director & Founder",
   },
   {
     name: "James Whitfield, NP-C",
     credentials: "Lead Aesthetic Provider",
     bio: "A decade of experience in advanced injectables and laser medicine. James is known for the kind of results that make patients protective of their secret — and for a chairside manner that makes the work feel calm.",
-    imageSrc: "/images/team-james.svg",
+    imageSrc: "/images/team-james.png",
     imageAlt: "James Whitfield — Lead Aesthetic Provider",
   },
 ] as const;

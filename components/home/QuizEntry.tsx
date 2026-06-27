@@ -75,12 +75,12 @@ export function QuizEntry(): JSX.Element {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.7, ease: EASE }}
-            className="w-full max-w-md border border-lumen-black/10 bg-white p-8 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.25)]"
+            className="w-full max-w-md border border-lumen-gold/25 bg-lumen-black/95 p-8 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.45)] backdrop-blur-md"
           >
-            <p className="mb-2 font-body text-[10px] uppercase tracking-widest text-lumen-black/50">
+            <p className="mb-2 font-body text-[10px] uppercase tracking-widest text-lumen-gold">
               Question 1 of 5
             </p>
-            <h3 className="mb-6 font-display text-xl italic text-lumen-black">
+            <h3 className="mb-6 font-display text-xl italic text-lumen-offwhite">
               What&apos;s your primary concern?
             </h3>
 
@@ -101,11 +101,11 @@ export function QuizEntry(): JSX.Element {
                     type="button"
                     tabIndex={-1}
                     aria-hidden
-                    className="flex w-full items-center justify-between border border-lumen-black/15 bg-white px-4 py-3 text-left font-body text-sm text-lumen-black/80"
+                    className="group flex w-full items-center justify-between border border-lumen-border bg-lumen-black/40 px-4 py-3 text-left font-body text-sm text-lumen-offwhite/80 transition-all duration-500 hover:border-lumen-gold/50"
                     animate={{
                       boxShadow: [
                         "0 0 0 0 rgba(184,151,74,0)",
-                        "0 0 0 6px rgba(184,151,74,0.08)",
+                        "0 0 0 6px rgba(184,151,74,0.12)",
                         "0 0 0 0 rgba(184,151,74,0)",
                       ],
                     }}
@@ -116,8 +116,8 @@ export function QuizEntry(): JSX.Element {
                       delay: 1 + i * 0.2,
                     }}
                   >
-                    <span>{option}</span>
-                    <span aria-hidden className="text-lumen-black/30">
+                    <span className="group-hover:text-lumen-offwhite transition-colors duration-500">{option}</span>
+                    <span aria-hidden className="text-lumen-gold/60 transition-transform duration-500 group-hover:translate-x-1">
                       →
                     </span>
                   </motion.button>

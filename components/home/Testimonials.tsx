@@ -50,15 +50,15 @@ export function Testimonials(): JSX.Element {
           In their words.
         </h2>
 
-        <ul className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-10">
+        <ul className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10">
           {TESTIMONIALS.map((t) => (
             <li
               key={t.name}
-              className="flex flex-col items-start border-t border-lumen-border pt-8"
+              className="flex flex-col items-start border border-lumen-border/40 bg-gradient-to-b from-lumen-dark/60 to-lumen-black/80 p-8 transition-all duration-500 hover:border-lumen-gold/30 hover:shadow-[0_0_25px_rgba(184,151,74,0.08)]"
             >
               <span
                 aria-hidden
-                className="mb-6 font-display text-7xl italic text-lumen-gold"
+                className="mb-4 font-display text-7xl italic text-lumen-gold"
               >
                 {t.initial}
               </span>
