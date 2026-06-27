@@ -1,0 +1,29 @@
+<!--
+  Team placeholder — editorial silhouette for James Whitfield.
+
+  Shorter hair silhouette (different shape than Elena's) so the two
+  cards read as distinct people. Same warm-grey palette as the rest of
+  the editorial placeholder family.
+
+  TODO(C5): swap for a real editorial headshot per PRD §12.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-label="Editorial portrait placeholder">
+  <rect width="300" height="400" fill="#1A1A1A" />
+  <defs>
+    <radialGradient id="g" cx="50%" cy="38%" r="60%">
+      <stop offset="0%" stop-color="#3A3328" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#1A1A1A" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="300" height="400" fill="url(#g)" />
+  <!-- shorter hair, no length past jaw -->
+  <path d="M 100 170 Q 100 130 150 120 Q 200 130 200 170 L 200 200 Q 150 210 100 200 Z" fill="#2E2924" opacity="0.9" />
+  <!-- head -->
+  <ellipse cx="150" cy="160" rx="52" ry="60" fill="#4A453E" opacity="0.85" />
+  <!-- neck -->
+  <rect x="136" y="210" width="28" height="26" fill="#3A3530" opacity="0.85" />
+  <!-- shoulders -->
+  <path d="M 60 400 Q 60 275 150 265 Q 240 275 240 400 Z" fill="#3A3530" opacity="0.85" />
+  <!-- soft highlight on cheek -->
+  <ellipse cx="140" cy="148" rx="18" ry="28" fill="#5A554D" opacity="0.3" />
+</svg>
